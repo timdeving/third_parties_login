@@ -1,5 +1,5 @@
 # third_parties_login
-Very simple login system via third parties (Yandex & Tg)
+Simple login system via third parties (Yandex & Tg)
 
 Yandex integration - https://oauth.yandex.com (Get ClientID and Client secret). For Redirect URI for web services - set to http://127.0.0.1:8000/accounts/yandex/login/callback/; 
 Tg integration - https://core.telegram.org/widgets/login (Create own bot via Gotfather and and with coommand "/setdomain" set your domain for the bot http://127.0.0.1:8000).
