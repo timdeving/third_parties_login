@@ -8,4 +8,7 @@ Used django-allauth package, simply overrode login and logout templates (for sim
 
 In settings.py set your keys for SOCIALACCOUNT_PROVIDERS
 
+pip install django-allauth
+pip install "django-allauth[socialaccount]"
+
 <img width="419" height="173" alt="Screenshot 2025-07-25 at 5 05 55 PM" src="https://github.com/user-attachments/assets/f82b3a02-8a51-4d79-962e-adaf16158a23" />
