@@ -1,0 +1,17 @@
+{% extends "main_login.html" %}
+{% block content %}
+<h2>Sign Out</h2>
+<p>u sure u wanna log out?</p>
+<form method="post" action="{% url 'account_logout' %}">
+  {% csrf_token %}
+  {% if redirect_field_value %}
+  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+  {% endif %}
+  <button type="submit">
+    Log Out
+  </button>
+</form>
+<p>
+  <a href="{% url 'main_view' %}">Back to Login</a>
+</p>
+{% endblock %}

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #282828;
+            margin: 0;
+        }
+
+        .form-wrapper {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .social-login-buttons a {
+            display: block;
+            margin-bottom: 15px;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+        }
+
+        .social-login-buttons a.yandex {
+            background-color: #fc3f1d;
+        }
+
+        .social-login-buttons a.telegram {
+            background-color: #0088cc;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="form-wrapper">
+        {% block content %}
+        <h1>Login with:</h1>
+        <div class="social-login-buttons">
+            <a href="{% url 'yandex_login' %}" class="yandex">Login with Yandex</a>
+            <a href="{% url 'telegram_login' %}" class="telegram">Login with Telegram</a>
+        </div>
+        {% if user.is_authenticated %}
+        <p>You are logged in as {{ user.username }}!</p>
+        {% if user.first_name or user.last_name %}
+        <p>Full Name: <span class="font-semibold">{{ user.first_name }} {{ user.last_name }}</span>
+        </p>
+        {% endif %}
+        {% if account %}
+        <p>{{ account.extra_data.username }}</p>
+        {% if account.extra_data.photo_url %}
+        <img src={{account.extra_data.photo_url}}
+            alt="Telegram User Profile Picture"/>
+        {% endif %}
+        {% endif %}
+        <p><a href="{% url 'account_logout' %}">Logout</a></p>
+        {% endif %}
+        {% endblock content %}
+    </div>
+</body>
+
+</html>

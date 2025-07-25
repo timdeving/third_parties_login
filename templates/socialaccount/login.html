@@ -1,0 +1,12 @@
+{% extends "main_login.html" %}
+{% block content %}
+<h2>Login with {{ provider.name }}</h2>
+<form method="post" action="/accounts/{{ provider.id }}/login/">
+    {% csrf_token %}
+    <input type="hidden" name="next" value="{{ redirect_field_value }}" />
+    <button type="submit">
+        Login with {{ provider.name }}
+    </button>
+    <a href="{% url 'main_view' %}">Back to Login</a>
+</form>
+{% endblock content %}
